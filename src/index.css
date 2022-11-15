@@ -2,7 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: FontAwesome;
+    src:url('../assets/fonts/SourceCodePro-Regular.ttf');
+}
+
 * {
     background: #181818;
     color: white;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 16px;
 }

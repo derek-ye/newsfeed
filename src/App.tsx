@@ -1,7 +1,8 @@
 /** @jsxImportSource solid-js */
 import type { Component } from 'solid-js';
 import { createSignal } from 'solid-js';
-import type { Post } from 'types/Post'
+import type { Post } from './types/Post';
+import PostComponent from './components/Post';
 
 import logo from './logo.svg';
 import styles from './App.module.css';
@@ -53,11 +54,8 @@ getHackerNewsRss()
   return (
     <div>
       { xmlData().map(e => 
-        <div>
-          <a href={e.altlink}>{e.title}</a>
-          <br/>
-        </div>)
-      }
+        <PostComponent {...e}></PostComponent>
+      ) }
       <p>hello</p>
     </div>
   );
