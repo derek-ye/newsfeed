@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "babel-preset-solid": "^1.6.2",
+    "pnpm": "^7.16.0",
     "solid-js": "^1.6.2"
   }
 }
