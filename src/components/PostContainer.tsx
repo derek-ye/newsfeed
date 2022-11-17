@@ -12,7 +12,7 @@ const PostContainerComponent: Component = () => {
     }]);
 
     const getHackerNewsRss = () => {
-      let request = new Request(`https://news.ycombinator.com/rss`);
+      let request = new Request(`https://web-production-9bc0.up.railway.app/news.ycombinator.com/rss`);
     
       fetch(request).then((results) => {
         // results returns XML. lets cast this to a string, then create
