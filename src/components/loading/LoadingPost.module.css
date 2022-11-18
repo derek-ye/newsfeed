@@ -1,0 +1,46 @@
+.shimmerBG {
+    animation-duration: 2.2s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: shimmer;
+    animation-timing-function: linear;
+    background: #ddd;
+    background: linear-gradient(to right, #616161 8%, #919191 18%, #616161 33%);
+    background-size: 1200px 100%;
+}
+
+@-webkit-keyframes shimmer {
+    0% {
+        background-position: -100% 0;
+    }
+    100% {
+        background-position: 100% 0;
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -1200px 0;
+    }
+    100% {
+        background-position: 1200px 0;
+    }
+}
+
+.line {
+    height: 8px;
+    margin: 10px 0 10px 0;
+    border-radius: 8px;
+}
+
+.large {
+    width: 60vw;
+}
+
+.medium {
+    width: 50vw;
+}
+
+.small {
+    width: 40vw;
+}

@@ -1,15 +1,11 @@
 import type { Component } from 'solid-js';
 import PostComponent from './Post';
+import LoadingPostContainerComponent from './loading/LoadingPostContainer';
 import { createSignal } from 'solid-js';
 import type { Post } from '../types/Post';
 
 const PostContainerComponent: Component = () => {
-    const [xmlData, setXmlData] = createSignal<Post[]>([{
-        title: 'Best Title',
-        altlink: 'Best Title',
-        link: 'Best Title',
-        date: 'Best Title'
-    }]);
+    const [xmlData, setXmlData] = createSignal<Post[]>([]);
 
     const getHackerNewsRss = () => {
       let request = new Request(`https://web-production-9bc0.up.railway.app/news.ycombinator.com/rss`);
@@ -42,7 +38,7 @@ const PostContainerComponent: Component = () => {
               }
               return postObj
             })
-            setXmlData(posts)
+            // setXmlData(posts)
           })
       });
     }
@@ -50,10 +46,11 @@ const PostContainerComponent: Component = () => {
     getHackerNewsRss()
     
     return (
-        <div class='px-4 py-2'>
-            { xmlData().map(e => 
-                <PostComponent {...e}></PostComponent>
-            ) }
+        <div class='px-4 py-2  min-w-[95%] lg:min-w-[35%]'>
+            { xmlData().length > 0 ?
+              xmlData().map(e => <PostComponent {...e}></PostComponent>) :
+              <LoadingPostContainerComponent />
+            }
         </div>
     );
 }

@@ -10,7 +10,7 @@ const App: Component = () => {
 
 
   return (
-    <div class='flex justify-center pt-6 bg-zinc-900'>
+    <div class='flex justify-center pt-6 bg-zinc-900 w-screen h-screen'>
       <PostContainerComponent />
     </div>
   );
