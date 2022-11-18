@@ -38,7 +38,7 @@ const PostContainerComponent: Component = () => {
               }
               return postObj
             })
-            // setXmlData(posts)
+            setXmlData(posts);
           })
       });
     }
@@ -46,7 +46,7 @@ const PostContainerComponent: Component = () => {
     getHackerNewsRss()
     
     return (
-        <div class='px-4 py-2  min-w-[95%] lg:min-w-[35%]'>
+        <div class='px-4 py-2 bg-zinc-900 min-w-[95%] lg:min-w-[35%]'>
             { xmlData().length > 0 ?
               xmlData().map(e => <PostComponent {...e}></PostComponent>) :
               <LoadingPostContainerComponent />
