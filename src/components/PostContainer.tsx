@@ -1,54 +1,26 @@
-import type { Component } from 'solid-js';
-import PostComponent from './Post';
-import LoadingPostContainerComponent from './loading/LoadingPostContainer';
-import { createSignal } from 'solid-js';
+import type { Accessor, Component, Setter } from 'solid-js';
 import type { Post } from '../types/Post';
 
-const PostContainerComponent: Component = () => {
-    const [xmlData, setXmlData] = createSignal<Post[]>([]);
+import PostComponent from './Post';
+import LoadingPostContainerComponent from './loading/LoadingPostContainer';
 
-    const getHackerNewsRss = () => {
-      let request = new Request(`https://web-production-9bc0.up.railway.app/news.ycombinator.com/rss`);
-    
-      fetch(request).then((results) => {
-        // results returns XML. lets cast this to a string, then create
-        // a new DOM object out of it!
-        return results
-          .text()
-          .then(( str ) => {
-            
-            let responseDoc = new DOMParser().parseFromString(str, 'application/xml');
-            console.log(responseDoc)
-    
-            // turn from HTMLCollection to array
-            let postsAsHTML = Array.prototype.slice.call(responseDoc.getElementsByTagName("item"))
-            console.log(postsAsHTML)
-            let posts = postsAsHTML.map(e => {
-              // console.log(e.childNodes[0])
-              let title = e.childNodes[0].textContent
-              let link = e.childNodes[1].textContent
-              let pubdate = e.childNodes[2].textContent
-              let altlink = e.childNodes[3].textContent
-    
-              const postObj: Post = {
-                title: title,
-                altlink: altlink,
-                link: link,
-                date: pubdate
-              }
-              return postObj
-            })
-            setXmlData(posts);
-          })
-      });
-    }
 
-    getHackerNewsRss()
+function delay(time: number) {
+  return new Promise(resolve => setTimeout(resolve, time));
+}
+
+type PostContainerProp = {
+  getPostData: Accessor<Post[]>,
+  setDataFromRSSSource: () => void
+}
+
+const PostContainerComponent: Component<PostContainerProp> = (props: PostContainerProp) => {
+    props.setDataFromRSSSource()
     
     return (
-        <div class='px-4 py-2 bg-zinc-900 min-w-[95%] lg:min-w-[35%]'>
-            { xmlData().length > 0 ?
-              xmlData().map(e => <PostComponent {...e}></PostComponent>) :
+        <div>
+            { props.getPostData().length > 0 ?
+              props.getPostData().map(e => <PostComponent {...e}></PostComponent>) :
               <LoadingPostContainerComponent />
             }
         </div>
