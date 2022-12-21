@@ -3,12 +3,14 @@
 @tailwind utilities;
 
 @font-face {
-    font-family: FontAwesome;
-    src:url('../assets/fonts/SourceCodePro-Regular.ttf');
+    font-family: 'Mona Sans';
+    src:url('../assets/fonts/Mona-Sans.woff') format('woff');
 }
 
 * {
     color: white;
-    font-family: 'Source Code Pro', monospace;
-    font-size: 17px;
+    font-family: 'Mona Sans', monospace;
+    -webkit-font-smoothing: antialiased; 
+    -moz-osx-font-smoothing: grayscale;
+    letter-spacing: 0.048em;
 }

@@ -12,8 +12,9 @@ const App: Component = () => {
   const [xmlData, setXmlData] = createSignal<Post[]>([]);
 
   return (
-    <div class='flex justify-center bg-zinc-900 min-w-screen min-h-screen'>
+    <div class='flex justify-center bg-zinc-900 min-w-screen min-h-screen text-md'>
       <div class='px-4 py-2 bg-zinc-900 min-w-[95%] lg:min-w-[35%]'>
+        <h1 class='mt-4 mb-6 text-xl lg:text-2xl lg:mt-6 lg:mb-6'>Your favorite tech news, all in one place.</h1>
         <SourceSelectorComponent 
           clearPostData={() => setXmlData([])}
           setDataFromHN={() => getHackerNewsRss(setXmlData)} 

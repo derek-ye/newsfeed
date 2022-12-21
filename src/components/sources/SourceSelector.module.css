@@ -1,0 +1,26 @@
+.sourceButton {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+}
+
+.sourceButton:hover::before {
+    opacity: 1;
+}
+
+.sourceButton::before {
+    background: radial-gradient(
+        100px circle at var(--mouse-x) var(--mouse-y),
+        rgba(255, 255, 255, 0.1),
+        transparent 40%
+    );
+    border-radius: inherit;
+    content: "";   /* required to give before div content space */
+    height: 100%;
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    transition: opacity 500ms;
+    width: 100%;
+    /* z-index: 2; */
+    opacity: 0;
+}

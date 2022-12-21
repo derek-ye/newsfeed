@@ -1,4 +1,5 @@
 import type { Component } from 'solid-js';
+import styles from './SourceSelector.module.css';
 
 type SourceSelectorProps = {
     clearPostData: () => void,
@@ -6,22 +7,38 @@ type SourceSelectorProps = {
     setDataFromLobsters: () => void
 }
 
+const handleOnMouseMove = e => {
+    const { currentTarget: target} = e;
+    const rect = target.getBoundingClientRect(),
+    x = e.clientX - rect.left,
+    y = e.clientY - rect.top;
+
+    target.style.setProperty("--mouse-x", `${x}px`);
+    target.style.setProperty("--mouse-y", `${y}px`);
+}
+
 const SourceSelectorComponent: Component<SourceSelectorProps> = (props: SourceSelectorProps) => {
     return (
-        <div class='px-4 py-3 mb-6 lg:mb-12 bg-zinc-800 my-2 rounded-md flex-nowrap items-center'>
-            <button class='rounded-full px-4 py-1 mr-1 focus:ring focus:ring-violet-900 focus:bg-zinc-900' 
+        <div class='py-3 mb-2 my-2 flex-nowrap items-center'>
+            <button class={`rounded-md px-4 py-1 mr-1 ` + styles.sourceButton}
                 onClick={() => {
                     props.clearPostData()
                     props.setDataFromHN()
                 }}
+                onMouseMove={
+                    handleOnMouseMove
+                }
             >
                 Hackernews
             </button>
-            <button class='rounded-full px-4 py-1 focus:ring focus:ring-violet-900 focus:bg-zinc-900'
+            <button class={`rounded-md px-4 py-1 mr-1 ` + styles.sourceButton}
                 onClick={() => {
                     props.setDataFromLobsters()
                     props.clearPostData()
                 }}
+                onMouseMove={
+                    handleOnMouseMove
+                }
             >
                 Lobste.rs
             </button>
