@@ -20,7 +20,7 @@ const handleOnMouseMove = e => {
 const SourceSelectorComponent: Component<SourceSelectorProps> = (props: SourceSelectorProps) => {
     return (
         <div class='py-3 mb-2 my-2 flex-nowrap items-center'>
-            <button class={`rounded-md px-4 py-1 mr-1 ` + styles.sourceButton}
+            <button class={`rounded-md px-4 py-1 mr-2 focus:ring-2 focus:ring-violet-300 ` + styles.sourceButton}
                 onClick={() => {
                     props.clearPostData()
                     props.setDataFromHN()
@@ -31,7 +31,7 @@ const SourceSelectorComponent: Component<SourceSelectorProps> = (props: SourceSe
             >
                 Hackernews
             </button>
-            <button class={`rounded-md px-4 py-1 mr-1 ` + styles.sourceButton}
+            <button class={`rounded-md px-4 py-1 mr-2 focus:ring-2 focus:ring-violet-300 ` + styles.sourceButton}
                 onClick={() => {
                     props.setDataFromLobsters()
                     props.clearPostData()
