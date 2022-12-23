@@ -5,7 +5,7 @@ import type { Post } from './types/Post';
 import PostContainerComponent from './components/PostContainer';
 import SourceSelectorComponent from './components/sources/SourceSelector';
 import { createSignal } from 'solid-js';
-import {getHackerNewsRss, getLobstersRss} from './utils/getData'
+import { getHackerNewsRss, getLobstersRss, getCareerGrowthRss } from './utils/getData'
 
 const App: Component = () => {
 
@@ -19,6 +19,7 @@ const App: Component = () => {
           clearPostData={() => setXmlData([])}
           setDataFromHN={() => getHackerNewsRss(setXmlData)} 
           setDataFromLobsters={() => getLobstersRss(setXmlData)}
+          setDataFromCareerGrowthSources={() => getCareerGrowthRss(setXmlData)}
         />
         <PostContainerComponent getPostData={xmlData} setDataFromRSSSource={() => getHackerNewsRss(setXmlData)}/>
       </div>

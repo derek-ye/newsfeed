@@ -4,7 +4,8 @@ import styles from './SourceSelector.module.css';
 type SourceSelectorProps = {
     clearPostData: () => void,
     setDataFromHN: () => void,
-    setDataFromLobsters: () => void
+    setDataFromLobsters: () => void,
+    setDataFromCareerGrowthSources: () => void
 }
 
 const handleOnMouseMove = e => {
@@ -42,6 +43,17 @@ const SourceSelectorComponent: Component<SourceSelectorProps> = (props: SourceSe
             >
                 Lobste.rs
             </button>
+            {/* <button class={`rounded-md px-4 py-1 mr-2 focus:ring-2 focus:ring-violet-300 ` + styles.sourceButton}
+                onClick={() => {
+                    props.setDataFromCareerGrowthSources()
+                    props.clearPostData()
+                }}
+                onMouseMove={
+                    handleOnMouseMove
+                }
+            >
+                Career
+            </button> */}
         </div>
     );
 }
