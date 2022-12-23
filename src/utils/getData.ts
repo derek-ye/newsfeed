@@ -2,7 +2,7 @@ import type { Component, Setter } from 'solid-js';
 import type { Post } from '../types/Post';
 
 const getHackerNewsRss = (updateSignal: Setter<Post[]>) => {
-    let request = new Request(`https://web-production-9bc0.up.railway.app/news.ycombinator.com/rss`);
+    let request = new Request(`https://cors.sisyphism.com/news.ycombinator.com/rss`);
   
     fetch(request).then((results) => {
       // results returns XML. lets cast this to a string, then create
@@ -38,11 +38,12 @@ const getHackerNewsRss = (updateSignal: Setter<Post[]>) => {
   }
 
 const getLobstersRss = (updateSignal: Setter<Post[]>) => {
-    let request = new Request(`https://web-production-9bc0.up.railway.app/lobste.rs/rss`);
+    let request = new Request(`https://cors.sisyphism.com/lobste.rs/rss`);
 
     fetch(request).then((results) => {
         // results returns XML. lets cast this to a string, then create
         // a new DOM object out of it!
+        console.log(results);
         return results
         .text()
         .then(( str ) => {
